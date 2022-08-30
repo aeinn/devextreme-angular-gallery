@@ -1,0 +1,26 @@
+/* make COMPONENT float above everything */
+/* z-index cannot exceed 1500, otherwise it will block dev-extreme UI overlay */
+.componentView{
+    position:fixed;
+    top:0px;
+    z-index:1400;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(34, 34, 34);
+}
+
+.hide{
+    display: none;
+}
+
+.centerFlex{
+    height: 100%;
+}
+
+/* make close button float on the top left of COMPONENT */
+/* position absolute to make it non blocking */
+.floatingClose{
+    position: absolute;
+    opacity: 80%;
+    z-index: 1;
+}

@@ -1,0 +1,50 @@
+<div class="componentView">
+    <dx-button type="default" class="floatingClose" icon="remove" (onClick)="goBack(true)"></dx-button>
+    <div class="centerFlex">
+        <div class="galleryContainer">
+            <dx-button type="danger" class="floatingTrash" icon="trash" (onClick)="delImg()"></dx-button>
+            <dx-button type="success" class="floatingAdd" icon="add" (onClick)="openCamera()" [visible]="allowCamera" [disabled]="!allowCamera"></dx-button>
+            <dx-button *ngIf="galleryDS.length > 1" type="default" class="floatingArrowL" icon="arrowleft" (onClick)="imgPrevious()"></dx-button>
+            <dx-button *ngIf="galleryDS.length > 1" type="default" class="floatingArrowR" icon="arrowright" (onClick)="imgNext()"></dx-button>
+            <!-- set gallery height/width to 100% of the container size -->
+            <!-- remember to use a container to adjust the size of gallery -->
+            <dx-gallery
+                #gallery
+                [dataSource]="galleryDS"
+                noDataText="no image"
+                height="100%"
+                width="100%"
+                [loop]="true"
+                [showNavButtons]="false"
+                [showIndicator]="false"
+            >
+                <div *dxTemplate="let img of 'item'; let index = index">
+                    <img (click)="toggleText()" class="imgView" src="{{ img.picture }}"/>
+                    <div *ngIf="isShowText && img.text" class="imgText">{{img.text}}</div>
+                    <div class="imgCounter">{{index + 1}}/{{galleryDS.length}}</div>
+                </div>
+            </dx-gallery>
+        </div>
+    </div>
+
+    <div class="imgTile">
+        <dx-tile-view
+            #tileView
+            [items]="galleryDS"
+            noDataText="no image"
+            [height]="124"
+            [baseItemHeight]="120"
+            [baseItemWidth]="100"
+            width="100%"
+            [itemMargin]="2"
+            direction="horizontal"
+            itemTemplate="tileitem"
+            (onItemClick)="goToImg($event)"
+        >
+            <div *dxTemplate="let data of 'tileitem'; let index = index">
+                <img [ngClass]="{'highlight': isHighlight(data)}" style="height:100%; width:100%" src="{{ data.picture }}" />
+            </div>
+        </dx-tile-view>
+    </div>
+</div>
+<app-camera *ngIf="isOpenCamera" (closeCamera)="closeCamera($event)"></app-camera>

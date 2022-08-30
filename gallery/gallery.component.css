@@ -1,0 +1,107 @@
+/* make COMPONENT float above everything */
+/* z-index cannot exceed 1500, otherwise it will block dev-extreme UI overlay */
+.componentView{
+    position:fixed;
+    top:0px;
+    z-index:1400;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.707);
+}
+
+.centerFlex{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* make close button float on the top left of COMPONENT */
+/* position absolute to make it non blocking */
+.floatingClose{
+    position: absolute;
+    opacity: 80%;
+    z-index: 1;
+}
+
+/* use a container to limit the width of gallery and control the position of the button*/
+.galleryContainer{
+    height: calc(100% - 124px);
+    width: 600px;
+    max-width: 100%;
+    position: relative;
+    background-color: black;
+}
+
+/* floating button between gallery and the container of gallery*/
+/* 0u0 */
+.floatingTrash {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}
+
+.floatingAdd{
+    position: absolute;
+    bottom: calc(36px + 20px);
+    right: 20px;
+    z-index: 1;
+    border-radius: 50%;
+    opacity: 100%;
+}
+
+.floatingArrowL{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.floatingArrowR{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+/****************************************************************/
+/****************************************************************/
+
+/***** the content of gallery *****/
+/* reserve 36px for the next/prev button as well as the 'page' counter at the bottom of the GALLERY */
+.imgView{
+    height:calc(100% - 36px);
+}
+
+.imgText{
+    width:100%;
+    position: absolute;
+    background-color: rgb(0, 0, 0, 0.4);
+    font-size: 20px;
+    line-height: 100px;
+    bottom: 36px;
+    color:aliceblue;
+    text-align: center;
+}
+
+/* set the text height to match the prev/next button */
+.imgCounter{
+    color:aliceblue;
+    line-height: 36px;
+    text-align: center;
+}
+/*********************************/
+/*********************************/
+
+
+/* position the img tile to show at the bottom of the IMAGE */
+.imgTile{
+    position:absolute;
+    bottom: 0px;
+    background-color: black;
+    border-top: 1px solid gray;
+    width:100%
+}
+
+/* highlight the active img on top of tile */
+.highlight{
+    border: solid 2px yellow;
+}
