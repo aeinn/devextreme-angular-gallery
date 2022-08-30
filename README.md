@@ -1,5 +1,6 @@
 # devextreme-angular-gallery
 mobile friendly css for devextreme(angular) gallery
 
-sample: 
-![alt text](./gallery.PNG?height="400")
+sample: /n
+<img src="./gallery.PNG" height="200">
+![alt text](./gallery.PNG?height="200")
